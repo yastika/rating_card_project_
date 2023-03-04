@@ -10,6 +10,14 @@ html,body{
     /* width: 1440px; */
 }
 
+@media screen and (min-width:375px) {
+
+    html,body{
+        margin: 35px;
+    }
+    
+}
+
 .rating-card{
     /* background-color: hsl(215.3, 20%, 16%); */
     /* background-color: #212832; */
