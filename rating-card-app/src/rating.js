@@ -1,10 +1,8 @@
 
 import './style.css';
-import {useState} from 'react';
 
 export default function Rating (props){
 
-    const [isClicked,setIsClicked] = useState(false)
 
     function submitScore(){
         if(props.rating !== "")
@@ -15,12 +13,11 @@ export default function Rating (props){
 
     function buttonClicked(element, value){
         props.setRating(value)
-        if (value === '5'){
-            setIsClicked(true)
-        }
-        // element.className="score"
         element.className = "highest"
-        document.getElementById(value-1).className = "secondHighest"
+        if(value-1 !== 0){
+            document.getElementById(value-1).className = "secondHighest"
+        }
+        
     }
 
     return (
@@ -36,8 +33,8 @@ export default function Rating (props){
                 <button className="score" id='1' onClick={e=>buttonClicked(e.target,e.target.id)}>1</button>
                 <button className="score" id='2' onClick={e=>buttonClicked(e.target,e.target.id)}>2</button>
                 <button className="score" id='3' onClick={e=>buttonClicked(e.target,e.target.id)}>3</button>
-                <button className={isClicked? "secondHighest":"score"} id='4' onClick={e=>buttonClicked(e.target,e.target.id)}>4</button>
-                <button className={isClicked? "highest":"score"} id='5' onClick={e=>buttonClicked(e.target,e.target.id)}>5</button>
+                <button className="score" id='4' onClick={e=>buttonClicked(e.target,e.target.id)}>4</button>
+                <button className="score" id='5' onClick={e=>buttonClicked(e.target,e.target.id)}>5</button>
             </div>
             <button className='submit' id='submit' onClick={submitScore}>SUBMIT</button>
         </div>
